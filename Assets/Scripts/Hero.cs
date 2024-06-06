@@ -12,6 +12,7 @@ public class Hero : MonoBehaviour
     BoxCollider2D boxCollider;
 
     bool isMove;
+    bool isJump;
 
     [SerializeField] float runSpeed = 10f;
     [SerializeField] float jumpSpeed = 5f;
@@ -27,6 +28,7 @@ public class Hero : MonoBehaviour
     void Update()
     {
         Run();
+        Jump();
     }
 
     void OnMove(InputValue value)
@@ -34,16 +36,12 @@ public class Hero : MonoBehaviour
         moveInput = value.Get<Vector2>();
     }
 
-    bool IsMove(float move)
-    {
-        return (Mathf.Abs(move) > Mathf.Epsilon);
-    }
-
     void Run()
     {
         Vector2 runVector = new Vector2(moveInput.x * runSpeed, rb.velocity.y);
         rb.velocity = runVector;
-        bool isMove = IsMove(rb.velocity.x);
+
+        isMove = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
         if (isMove)
         {
             transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f);
@@ -52,16 +50,23 @@ public class Hero : MonoBehaviour
     }
     void OnJump(InputValue value)
     {
-        if (!boxCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) return;
+        bool isOnGround = boxCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
+
+        if (!isOnGround) return;
         if (value.isPressed)
         {
-            rb.velocity = new Vector2(0f, jumpSpeed);
+            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }
-
+        
+    }
+    void Jump()
+    {
+        isJump = Mathf.Abs(rb.velocity.y) > 0.1f;
+        animator.SetBool("isJumping", isJump);
     }
     void OnAttack(InputValue value)
     {
         bool isAttack = value.isPressed;
-        animator.SetBool("isAttacking",isAttack);
+        animator.SetBool("isAttacking", isAttack);
     }
 }
