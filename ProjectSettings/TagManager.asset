@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - Background
-  - Platform
+  - Ground
   - Player
   - 
   - 
@@ -44,7 +44,7 @@ TagManager:
   - name: Background
     uniqueID: 805421369
     locked: 0
-  - name: Platform
+  - name: Ground
     uniqueID: 3768850691
     locked: 0
   - name: Hero
