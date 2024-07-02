@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Hero
+  - Enemy
+  - Coins
+  - Keys
+  - Gate
+  - Boss
+  - Heart
   layers:
   - Default
   - TransparentFX
@@ -13,12 +21,12 @@ TagManager:
   - UI
   - Background
   - Ground
-  - Player
+  - Foreground
   - Climbing
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Player
+  - Bullet
+  - GameObject
   - 
   - 
   - 
@@ -55,6 +63,12 @@ TagManager:
     locked: 0
   - name: Climbing
     uniqueID: 242862813
+    locked: 0
+  - name: GameObject
+    uniqueID: 4021766097
+    locked: 0
+  - name: Enemy
+    uniqueID: 1703761289
     locked: 0
   - name: Hero
     uniqueID: 1634340433

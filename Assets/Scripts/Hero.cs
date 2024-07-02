@@ -10,27 +10,62 @@ public class Hero : MonoBehaviour
     Animator animator;
     Vector2 moveInput;
     BoxCollider2D boxCollider;
-
+    CapsuleCollider2D capsuleCollider;
+    Health enemyHealth;
+    DamageDealer damageDealer;
+    Health health;
+    static Hero instance;
     bool isMove;
     bool isJump;
-
+    float originalGravityScale;
+    public GameObject attackPoint;
+    public float radius;
+    public LayerMask enemiesLayerMask;
     [SerializeField] float runSpeed = 10f;
     [SerializeField] float jumpSpeed = 5f;
+    [SerializeField] float climbSpeed = 5f;
+    bool isAttack;
+    bool hasEnemies;
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
 
+
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
+        damageDealer = GetComponent<DamageDealer>();
+        originalGravityScale = rb.gravityScale;
+        health = GetComponent<Health>();
     }
 
 
     void Update()
     {
-        Run();
-        Jump();
-    }
+        if (!gameObject.GetComponent<Health>().isDie)
+        {
+            Run();
+            Jump();
+            Climb();
 
+        }
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Gate" && GameSession.instance.OpenGate())
+        {
+
+            GameUI.instance.NextScene();
+        }
+        if (boxCollider.IsTouchingLayers(LayerMask.GetMask("Water")))
+        {
+            rb.velocity = new Vector2(0f, 0f);
+            health.TakeDamage(200);
+        }
+    }
     void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
@@ -57,16 +92,58 @@ public class Hero : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }
-        
+
     }
     void Jump()
     {
-        isJump = Mathf.Abs(rb.velocity.y) > 0.1f;
+        isJump = Mathf.Abs(rb.velocity.y) > 0.2f &&
+                !capsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")) &&
+                !boxCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"));
         animator.SetBool("isJumping", isJump);
     }
     void OnAttack(InputValue value)
     {
-        bool isAttack = value.isPressed;
-        animator.SetBool("isAttacking", isAttack);
+        animator.SetBool("isAttacking", value.isPressed);
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemiesLayerMask);
+
+        if (enemies != null)
+        {
+            foreach (Collider2D enemy in enemies)
+            {
+                enemyHealth = enemy.GetComponent<Health>();
+                enemyHealth.TakeDamage(damageDealer.GetDamage());
+            }
+            hasEnemies = true;
+        }
+
+    }
+    public bool IsAttackingEnemy()
+    {
+        isAttack = animator.GetCurrentAnimatorStateInfo(0).IsName("Attack");
+        return (isAttack && hasEnemies);
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
+    }
+    void Climb()
+    {
+        bool isTouchingClimbing = capsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"));
+        if (!isTouchingClimbing)
+        {
+            rb.gravityScale = originalGravityScale;
+            boxCollider.isTrigger = false;
+            capsuleCollider.isTrigger = false;
+
+            animator.SetBool("isClimbing", false);
+
+            return;
+        }
+        Vector2 climbVector = new Vector2(rb.velocity.x, climbSpeed * moveInput.y);
+        rb.gravityScale = 0f;
+        rb.velocity = climbVector;
+        bool isClimbing = (Mathf.Abs(rb.velocity.y) > Mathf.Epsilon) && isTouchingClimbing;
+        animator.SetBool("isClimbing", isClimbing);
+
     }
 }
