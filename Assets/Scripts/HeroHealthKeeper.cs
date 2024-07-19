@@ -27,6 +27,10 @@ public class HeroHealthKeeper : MonoBehaviour
     {
         return heroHealth;
     }
+    public void Recover(int blood)
+    {
+        heroHealth += blood;
+    }
     public void SetOriginalHeroHealth(int originalHealth)
     {
         originalHeroHealth = originalHealth;

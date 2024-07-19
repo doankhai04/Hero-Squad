@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312db9a9e261aff41b705db5d22e69a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blood: 15
+  blood: 25
   keys: 0

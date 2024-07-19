@@ -71,6 +71,6 @@ public class GameSession : MonoBehaviour
     }
     public void RecoverBlood()
     {
-        FindObjectOfType<Hero>().GetComponent<Health>().Recover(blood);
+        HeroHealthKeeper.instance.Recover(blood);
     }
 }

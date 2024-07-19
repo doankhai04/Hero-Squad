@@ -35,7 +35,14 @@ public class Health : MonoBehaviour
         }
         boxCollider = GetComponent<BoxCollider2D>();
     }
+    private void Update()
+    {
+        if (gameObject.tag == "Hero")
+        {
+            bloodRemain = HeroHealthKeeper.instance.heroHealth;
 
+        }
+    }
     public int GetBlood()
     {
         return bloodRemain;
@@ -56,18 +63,18 @@ public class Health : MonoBehaviour
             }
         }
     }
-    public void Recover(int blood)
-    {
-        bloodRemain += blood;
-    }
+
 
     public void Die()
     {
-        
+
         isDie = true;
-        StartCoroutine(Destroy());
+        animator.SetTrigger("deathTrigger");
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
         if (!isHero)
         {
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             GameSession.instance.AddScore(enemyScore);
             AudioManagement.instance.PlayMonsterDeathAudio();
         }
@@ -77,13 +84,12 @@ public class Health : MonoBehaviour
             GameUI.instance.EndGame();
             AudioManagement.instance.PlayHeroDeathAudio();
         }
-    }
 
+        StartCoroutine(Destroy());
+
+    }
     IEnumerator Destroy()
     {
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
-        animator.SetTrigger("deathTrigger");
-        gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
         yield return new WaitForSecondsRealtime(deathTime);
         Destroy(gameObject);
     }

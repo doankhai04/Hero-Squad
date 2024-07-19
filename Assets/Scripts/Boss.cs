@@ -10,19 +10,23 @@ public class Boss : MonoBehaviour
     int attackIndex;
     private void Start()
     {
+
         animator = GetComponent<Animator>();
         enemy = GetComponent<Enemy>();
     }
 
     public void BossAttack()
     {
-        attackIndex = Random.Range(0, 2);
-        StartCoroutine(Attack());
+        if (!gameObject.GetComponent<Health>().isDie)
+        {
+            attackIndex = Random.Range(0, 2);
+            StartCoroutine(Attack());
+        }
     }
     IEnumerator Attack()
     {
         animator.SetTrigger("Attack" + attackIndex);
-        yield return new WaitForSeconds(idleTime);
+        yield return new WaitForSecondsRealtime(idleTime);
         animator.SetBool("isIdle", true);
         WaitTime();
     }
@@ -32,11 +36,10 @@ public class Boss : MonoBehaviour
     }
     IEnumerator NextAttack()
     {
-        yield return new WaitForSeconds(idleTime);
+        yield return new WaitForSecondsRealtime(idleTime);
         if (enemy.canAttack)
         {
-            attackIndex = Random.Range(0, 2);
-            animator.SetTrigger("Attack" + attackIndex);
+            BossAttack();
         }
         else
         {

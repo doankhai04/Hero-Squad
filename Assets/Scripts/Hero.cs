@@ -14,7 +14,6 @@ public class Hero : MonoBehaviour
     Health enemyHealth;
     DamageDealer damageDealer;
     Health health;
-    static Hero instance;
     bool isMove;
     bool isJump;
     float originalGravityScale;
@@ -25,7 +24,6 @@ public class Hero : MonoBehaviour
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 5f;
     bool isAttack;
-    bool hasEnemies;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -111,17 +109,16 @@ public class Hero : MonoBehaviour
             foreach (Collider2D enemy in enemies)
             {
                 enemyHealth = enemy.GetComponent<Health>();
-                enemyHealth.TakeDamage(damageDealer.GetDamage());
             }
-            hasEnemies = true;
         }
 
     }
-    public bool IsAttackingEnemy()
+    void AttackEnemy()
     {
-        isAttack = animator.GetCurrentAnimatorStateInfo(0).IsName("Attack");
-        return (isAttack && hasEnemies);
+        enemyHealth?.TakeDamage(damageDealer.GetDamage());
+        animator.SetBool("isAttacking", false);
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(attackPoint.transform.position, radius);

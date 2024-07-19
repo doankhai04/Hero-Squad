@@ -432,7 +432,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6521686169972155055, guid: 1e900f90a33621c478e0e4a59f9adacf, type: 3}
         m_TargetAssemblyTypeName: AudioManagement, Assembly-CSharp
         m_MethodName: PlayClickAudio
         m_Mode: 1
@@ -652,7 +652,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6521686169972155055, guid: 1e900f90a33621c478e0e4a59f9adacf, type: 3}
         m_TargetAssemblyTypeName: AudioManagement, Assembly-CSharp
         m_MethodName: PlayClickAudio
         m_Mode: 1
@@ -944,7 +944,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6521686169972155055, guid: 1e900f90a33621c478e0e4a59f9adacf, type: 3}
         m_TargetAssemblyTypeName: AudioManagement, Assembly-CSharp
         m_MethodName: PlayClickAudio
         m_Mode: 1
@@ -1884,7 +1884,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6521686169972155055, guid: 1e900f90a33621c478e0e4a59f9adacf, type: 3}
         m_TargetAssemblyTypeName: AudioManagement, Assembly-CSharp
         m_MethodName: PlayClickAudio
         m_Mode: 1
@@ -2353,7 +2353,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6521686169972155055, guid: 1e900f90a33621c478e0e4a59f9adacf, type: 3}
         m_TargetAssemblyTypeName: AudioManagement, Assembly-CSharp
         m_MethodName: PlayClickAudio
         m_Mode: 1
@@ -2638,7 +2638,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6521686169972155055, guid: 1e900f90a33621c478e0e4a59f9adacf, type: 3}
         m_TargetAssemblyTypeName: AudioManagement, Assembly-CSharp
         m_MethodName: PlayClickAudio
         m_Mode: 1
@@ -5904,7 +5904,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6521686169972155055, guid: 1e900f90a33621c478e0e4a59f9adacf, type: 3}
         m_TargetAssemblyTypeName: AudioManagement, Assembly-CSharp
         m_MethodName: PlayClickAudio
         m_Mode: 1
@@ -6407,7 +6407,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6521686169972155055, guid: 1e900f90a33621c478e0e4a59f9adacf, type: 3}
         m_TargetAssemblyTypeName: AudioManagement, Assembly-CSharp
         m_MethodName: PlayClickAudio
         m_Mode: 1
@@ -6498,7 +6498,7 @@ PrefabInstance:
     - target: {fileID: 3442734358942857596, guid: c9d2cf7b3fc275e4091dcb2feb09e8e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5926727394687185809, guid: 4d4056ed7897106499f54d35e6e383ef, type: 3}
     - target: {fileID: 3442734358942857596, guid: c9d2cf7b3fc275e4091dcb2feb09e8e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ExitGame

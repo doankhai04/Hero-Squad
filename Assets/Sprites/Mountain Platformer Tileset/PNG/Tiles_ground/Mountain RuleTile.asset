@@ -375,35 +375,7 @@ MonoBehaviour:
   - m_Id: 5
     m_Sprites:
     - {fileID: 21300000, guid: 5f06909d48cd42d4fb437412d03ad214, type: 3}
-    - {fileID: 21300000, guid: 3fe3a46e27425a44a850c5dc70f629f4, type: 3}
-    m_GameObject: {fileID: 0}
-    m_MinAnimationSpeed: 1
-    m_MaxAnimationSpeed: 1
-    m_PerlinScale: 0.5
-    m_Output: 1
-    m_ColliderType: 1
-    m_RandomTransform: 0
-    m_Neighbors: 01000000010000000100000001000000
-    m_NeighborPositions:
-    - {x: 0, y: -1, z: 0}
-    - {x: 1, y: 0, z: 0}
-    - {x: 0, y: 1, z: 0}
-    - {x: -1, y: 0, z: 0}
-    m_RuleTransform: 0
-  - m_Id: 13
-    m_Sprites:
-    - {fileID: 21300000, guid: 02b8f2e8e8fe6df4794a35b01c580d90, type: 3}
-    - {fileID: 21300000, guid: 64b7380b390c2b94cb8132a6f9a34072, type: 3}
-    - {fileID: 21300000, guid: 16f326b60ba8bb6458fd02e419241c64, type: 3}
-    - {fileID: 21300000, guid: 1120a0fe2733c57448f7024695771ee6, type: 3}
-    - {fileID: 21300000, guid: 7a2caa0d8f5f5444692722c0b943a779, type: 3}
-    - {fileID: 21300000, guid: c0ce07904be52534882e7ae209701a02, type: 3}
-    - {fileID: 21300000, guid: a4eda8239cf83e34e875b81a979f3c17, type: 3}
-    - {fileID: 21300000, guid: 5256ae99cc5edc94b949fd1c5990cdc8, type: 3}
-    - {fileID: 21300000, guid: 75aa8bba99d8f5744bd6f18c9726ad6f, type: 3}
-    - {fileID: 21300000, guid: 9602eeb8fa1f48543b8bd181c51f606b, type: 3}
-    - {fileID: 21300000, guid: 30995467d7f9e504c9cc160c59116aad, type: 3}
-    - {fileID: 21300000, guid: 4d884b0a0cb367e41af0b53864855ed4, type: 3}
+    - {fileID: 21300000, guid: 5f06909d48cd42d4fb437412d03ad214, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1

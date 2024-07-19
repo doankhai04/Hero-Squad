@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour
         circleCollider = GetComponent<CircleCollider2D>();
         animator = GetComponent<Animator>();
         damageDealer = GetComponent<DamageDealer>();
+        heroHealth = FindObjectOfType<Hero>().GetComponent<Health>();
         boss = GetComponent<Boss>();
         isMove = true;
         currentStateInfo = animator.GetCurrentAnimatorStateInfo(0);
@@ -47,6 +48,8 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (gameObject.GetComponent<Health>().isDie) walkSpeed = 0;
+
         Move();
     }
     void Move()
@@ -66,7 +69,7 @@ public class Enemy : MonoBehaviour
         }
         if (other.tag == "Hero")
         {
-          UpdateWalkSpeed();
+            UpdateWalkSpeed();
             canAttack = false;
             isMove = true;
             if (!isBoss)
@@ -101,7 +104,7 @@ public class Enemy : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        heroHealth = other.GetComponent<Health>();
+        
 
         if (other.tag == "Hero")
         {
@@ -153,6 +156,5 @@ public class Enemy : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(attackPoint.transform.position, size);
-
     }
 }

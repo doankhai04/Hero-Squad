@@ -279,11 +279,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 399999700049786649}
-  walkSpeed: 1
   angle: 0
   size: {x: 0.66, y: 0.06}
-  timeForNextAttack: 2
   isBoss: 0
+  walkSpeed: 1
+  isMove: 0
+  originalWalkSpeed: 0
+  canAttack: 0
 --- !u!114 &7587004667735859977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d6ccf1cad3bede4fb63bd4d47588130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodRemain: 40
+  bloodRemain: 50
   isHero: 0
   deathTime: 0.3333333
   enemyScore: 10

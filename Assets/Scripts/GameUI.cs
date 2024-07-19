@@ -137,8 +137,9 @@ public class GameUI : MonoBehaviour
     public void ExitToMain()
     {
         SceneManagement.instance.ResetScene();
-         SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Menu");
         HeroHealthKeeper.instance.SetHealth(200);
+        GameSession.instance.Reset();
         bloodSlider.value = HeroHealthKeeper.instance.GetHealth();
         playerScreen.SetActive(false);
         finishBoard.SetActive(false);
@@ -162,6 +163,7 @@ public class GameUI : MonoBehaviour
         SceneManager.LoadScene("Scene_1_Forest");
         finishBoard.SetActive(false);
         playerScreen.SetActive(true);
+        GameSession.instance.Reset();
         SceneManagement.instance.ResetScene();
         HeroHealthKeeper.instance.SetHealth(200);
         bloodSlider.value = HeroHealthKeeper.instance.GetHealth();
@@ -179,6 +181,8 @@ public class GameUI : MonoBehaviour
     }
     public void BackToMainScene()
     {
+        HeroHealthKeeper.instance.SetHealth(200);
+        GameSession.instance.Reset();
         SceneManagement.instance.ResetScene();
         SceneManager.LoadScene("Menu");
         mainScene.SetActive(true);

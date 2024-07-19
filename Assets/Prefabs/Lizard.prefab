@@ -271,6 +271,7 @@ MonoBehaviour:
   walkSpeed: 1
   isMove: 0
   originalWalkSpeed: 0
+  canAttack: 0
 --- !u!114 &4306708282083712409
 MonoBehaviour:
   m_ObjectHideFlags: 0
